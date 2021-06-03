@@ -1,13 +1,27 @@
 <template>
   <div class="total-contain">
-    <div class="project-contian"></div>
+    <div class="project-contian">
+      <div class="contenttitle">北京大兴国际机场临空经济区发展服务中心项目</div>
+      <div class="describeLabel mgt20">项目名称</div>
+      <span>北京大兴国际机场临空经济区发展服务中心项目</span>
+      <div class="describeLabel mgt20">施工单位</div>
+      <span>中建三局集团有限公司</span>
+      <div class="describeLabel mgt20">建筑面积</div>
+      <span>173246.4㎡</span>
+      <div class="describeLabel mgt20">开工日期</div>
+      <span>2020年06月01日</span>
+      <div class="describeLabel mgt20">竣工日期</div>
+      <span>2021年12月31日</span>
+    </div>
     <div class="main-contian">
+      <div class="applicationLabel">基础应用</div>
       <div
         class="card_item"
         v-for="(item, index) in menuArray"
         :key="index"
         :class="isShowMarginRight(index) ? 'marginght_10' : ''"
       >
+        <img class="iconImage" :src="getImage(index)" />
         <div class="titleLabel">{{ item.title }}</div>
         <div class="describeLabel">{{ item.desc }}</div>
       </div>
@@ -99,6 +113,12 @@ export default {
     isShowMarginRight(index) {
       return index % 5 == 4;
     },
+
+    getImage(index) {
+      let number = index + 1;
+      let currentnumber = number < 10 ? `0${number}` : number;
+      return require(`../../assets/home/home${currentnumber}.png`);
+    },
   },
 };
 </script>
@@ -109,34 +129,59 @@ export default {
   justify-content: space-between;
   padding-left: 5%;
   padding-right: 5%;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .project-contian {
   width: 300px;
-  height: 400px;
-  background: cornflowerblue;
+  padding: 0px 40px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  .contenttitle {
+    text-align: left;
+    font-size: 20px;
+    color: #434343;
+    min-height: 24px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .describeLabel {
+    font-size: 14px;
+    color: #999;
+  }
+  span {
+    font-size: 14px;
+    color: #333;
+    padding-top: 5px;
+  }
 }
 
 .main-contian {
-  width: calc(100% - 320px);
+  width: calc(100% - 300px);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.applicationLabel {
+  font-size: 20px;
+  color: #444;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .card_item {
   width: calc((100% - 40px) / 5);
   border: 1px solid #eeeeee;
   background: #fff;
-  height: 155px;
+  height: 184px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   margin-bottom: 10px;
   margin-right: 10px;
-  border-radius: 4px;
-  padding: 10px;
+  border-radius: 5px;
+  padding: 20px;
 }
 
 .marginght_10 {
@@ -152,5 +197,15 @@ export default {
   font-size: 12px;
   color: #999;
   margin-top: 10px;
+}
+
+.iconImage {
+  width: 44px;
+  // height: 44px;
+  margin-bottom: 10px;
+}
+
+.mgt20 {
+  margin-top: 20px;
 }
 </style>
