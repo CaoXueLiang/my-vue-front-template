@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { loginOut } from "../../../utils/loginManage";
 export default {
   data() {
     return {
@@ -41,6 +42,7 @@ export default {
   methods: {
     handleCommand(command) {
       if (command == "a") {
+        loginOut();
         this.$router.push("/login");
       }
     },

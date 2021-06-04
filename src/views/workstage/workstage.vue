@@ -20,6 +20,7 @@
         v-for="(item, index) in menuArray"
         :key="index"
         :class="isShowMarginRight(index) ? 'marginght_10' : ''"
+        @click="clickedItem(item)"
       >
         <img class="iconImage" :src="getImage(index)" />
         <div class="titleLabel">{{ item.title }}</div>
@@ -118,6 +119,10 @@ export default {
       let number = index + 1;
       let currentnumber = number < 10 ? `0${number}` : number;
       return require(`../../assets/home/home${currentnumber}.png`);
+    },
+
+    clickedItem(item) {
+      console.log("------点击item------" + JSON.stringify(item.code));
     },
   },
 };
