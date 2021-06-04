@@ -182,6 +182,13 @@ export default {
   margin-right: 10px;
   border-radius: 5px;
   padding: 20px;
+  &:hover {
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+    .titleLabel {
+      font-size: 16px;
+      color: #1e90ff;
+    }
+  }
 }
 
 .marginght_10 {

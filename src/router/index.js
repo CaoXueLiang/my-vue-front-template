@@ -15,6 +15,11 @@ const Basicsetting = () => import("../views/settings/basicsetting.vue");
 const Securitysetting = () => import("../views/settings/securitysetting.vue");
 const Noticesetting = () => import("../views/settings/noticesetting.vue");
 
+const CompanyStatistics = () => import("../views/labour/companyStatistics.vue");
+const TeamStatistics = () => import("../views/labour/teamStatistics.vue");
+const OperatingPerson = () => import("../views/labour/operatingPerson.vue");
+const ManagementPerson = () => import("../views/labour/managementPerson.vue");
+
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch((err) => err);
@@ -42,6 +47,45 @@ const constRoutes = [
 ];
 
 const asyncRoutes = [
+  {
+    path: "/workstage",
+    component: Layout,
+    name: "Workstage",
+    meta: {
+      title: "劳务人员现场实名制管理",
+      icon: "el-icon-s-help",
+      menuId: 10,
+    },
+    children: [
+      {
+        path: "companyStatistics",
+        name: "CompanyStatistics",
+        component: CompanyStatistics,
+        meta: { title: "参建单位统计", icon: "CompanyStatistics", menuId: 11 },
+      },
+      {
+        path: "teamStatistics",
+        name: "TeamStatistics",
+        component: TeamStatistics,
+        meta: { title: "项目班组统计", icon: "TeamStatistics", menuId: 11 },
+      },
+
+      {
+        path: "operatingPerson",
+        name: "OperatingPerson",
+        component: OperatingPerson,
+        meta: { title: "施工作业人员", icon: "OperatingPerson", menuId: 11 },
+      },
+
+      {
+        path: "managementPerson",
+        name: "ManagementPerson",
+        component: ManagementPerson,
+        meta: { title: "施工管理人员", icon: "ManagementPerson", menuId: 11 },
+      },
+    ],
+  },
+
   {
     path: "/message",
     component: Layout,
