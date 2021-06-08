@@ -9,14 +9,15 @@
       text-color="#303133"
       active-text-color="#1677ff"
       default-active="0"
+      @select="selectItem"
     >
       <el-menu-item
         v-for="(item, index) in applicationArray"
         :key="index"
         :index="index.toString()"
       >
-        <i class="el-icon-setting"></i>
-        <span slot="title">{{ item.meta.title }}</span>
+        <span :class="['iconfont', item.meta.icon]" />
+        <span slot="title" class="marginleft5">{{ item.meta.title }}</span>
       </el-menu-item>
     </el-menu>
   </div>
@@ -25,18 +26,25 @@
 <script>
 export default {
   data() {
-    return {
-      applicationArray: this.$store.state.applicationMenus,
-    };
+    return {};
   },
   computed: {
     key() {
       return this.$route.fullPath;
     },
+    applicationArray() {
+      return this.$store.state.applicationMenus;
+    },
   },
+  mounted() {},
   methods: {
     backMethod() {
       this.$router.push("/");
+    },
+
+    selectItem(item) {
+      let path = this.applicationArray[item];
+      this.$router.push(path.path);
     },
   },
 };
@@ -85,5 +93,11 @@ export default {
 ::v-deep .el-menu-item.is-active {
   border-right: 4px solid #409eff;
   background: #eef5fe;
+}
+
+.marginleft5 {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 400;
 }
 </style>

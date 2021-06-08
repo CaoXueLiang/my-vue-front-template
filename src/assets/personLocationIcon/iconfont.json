@@ -1,0 +1,37 @@
+{
+  "id": "2179725",
+  "name": "cehsi",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "21586717",
+      "name": "person_location_manage",
+      "font_class": "person_location_manage",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "21586634",
+      "name": "personLoacation_another_config",
+      "font_class": "personLoacation_another_config",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "21586011",
+      "name": "personlocationAnother_01",
+      "font_class": "personlocationAnother_01",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "21586014",
+      "name": "personlocationAnother_04",
+      "font_class": "personlocationAnother_04",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    }
+  ]
+}

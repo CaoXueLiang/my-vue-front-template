@@ -27,19 +27,33 @@
 </template>
 
 <script>
-import { loginOut } from "../../../utils/loginManage";
+import _ from "lodash";
+import { loginOut, saveApplicationMenus } from "../../../utils/loginManage";
 export default {
   data() {
     return {
-      menuArray: [
-        { title: "工作台", isSelect: true, path: "/" },
-        { title: "消息", isSelect: false, path: "/message" },
-        { title: "待办事项", isSelect: false, path: "/workflow" },
-        { title: "设置", isSelect: false, path: "/setttings" },
-      ],
+      menuArray: [],
     };
   },
+  created() {
+    this.dealWithMenus();
+  },
   methods: {
+    dealWithMenus() {
+      let tmpArray = _.cloneDeep(this.$store.state.permisstionMenus);
+      let anotherArray = [];
+      for (let index = 0; index < tmpArray.length; index++) {
+        const element = tmpArray[index];
+        let dict = {
+          title: element.meta.title,
+          isSelect: index == 0,
+          path: element.path,
+        };
+        anotherArray.push(dict);
+      }
+      this.menuArray = anotherArray;
+    },
+
     handleCommand(command) {
       if (command == "a") {
         loginOut();
@@ -52,6 +66,19 @@ export default {
         let element = this.menuArray[index];
         element.isSelect = number === index;
       }
+
+      let tmpArray = [];
+      let permisstionMenus = this.$store.state.permisstionMenus;
+      for (let index = 0; index < permisstionMenus.length; index++) {
+        const element = permisstionMenus[index];
+        if (element.path === item.path) {
+          tmpArray = element.children;
+        }
+      }
+      saveApplicationMenus(tmpArray);
+
+      console.log(tmpArray);
+
       this.$router.push(item.path);
     },
   },

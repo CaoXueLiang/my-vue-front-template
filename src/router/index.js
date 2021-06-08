@@ -111,7 +111,7 @@ export const asyncRoutes = [
         component: TowerList,
         meta: {
           title: "塔机列表",
-          icon: "TowerList",
+          icon: "icon-person_location_manage",
           menuId: 105,
           code: "TCVA",
         },
@@ -122,7 +122,7 @@ export const asyncRoutes = [
         component: OperationRecord,
         meta: {
           title: "运行记录",
-          icon: "OperationRecord",
+          icon: "icon-personLoacation_another_config",
           menuId: 106,
           code: "TCVA",
         },
@@ -133,7 +133,7 @@ export const asyncRoutes = [
         component: ReadingRecord,
         meta: {
           title: "读数记录",
-          icon: "ReadingRecord",
+          icon: "icon-personlocationAnother_01",
           menuId: 107,
           code: "TCVA",
         },
@@ -144,7 +144,7 @@ export const asyncRoutes = [
         component: VideoExamine,
         meta: {
           title: "录像查看",
-          icon: "VideoExamine",
+          icon: "icon-personlocationAnother_04",
           menuId: 108,
           code: "TCVA",
         },
