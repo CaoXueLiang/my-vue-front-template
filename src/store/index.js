@@ -11,19 +11,31 @@ export default new Vuex.Store({
       reducer(state) {
         return {
           frontToken: state.frontToken,
+          permisstionMenuIds: state.permisstionMenuIds,
           permisstionMenus: state.permisstionMenus,
+          applicationMenus: state.applicationMenus,
         };
       },
     }),
   ],
   state: {
+    permisstionMenuIds: [],
     permisstionMenus: [],
     frontToken: "",
     userInfo: null,
+    applicationMenus: [],
   },
   mutations: {
-    SET_PERMISSTIONMENU(state, menus) {
+    SET_PERMISSTIONMENUIDS(state, menus) {
+      state.permisstionMenuIds = menus;
+    },
+
+    SET_PERMISSTIONMENUS(state, menus) {
       state.permisstionMenus = menus;
+    },
+
+    SET_APPLICATIONMENUS(state, menus) {
+      state.applicationMenus = menus;
     },
 
     SET_TOKEN(state, token) {

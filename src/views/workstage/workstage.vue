@@ -31,6 +31,11 @@
 </template>
 
 <script>
+import {
+  getPermisstionMenus,
+  saveApplicationMenus,
+  getApplicationMenus,
+} from "../../utils/loginManage";
 export default {
   data() {
     return {
@@ -123,6 +128,26 @@ export default {
 
     clickedItem(item) {
       console.log("------点击item------" + JSON.stringify(item.code));
+
+      let currentArray = [];
+      let menusArray = getPermisstionMenus();
+      for (let index = 0; index < menusArray.length; index++) {
+        const element = menusArray[index];
+        if (element.meta.code === "CONTROLBOARD") {
+          let childrenArray = element.children;
+          for (let sonIndex = 0; sonIndex < childrenArray.length; sonIndex++) {
+            const sonElement = childrenArray[sonIndex];
+            if (sonElement.meta.code === item.code) {
+              currentArray.push(sonElement);
+            }
+          }
+        }
+      }
+      saveApplicationMenus(currentArray);
+
+      if (currentArray.length > 0) {
+        this.$router.push(`/workstage/${currentArray[0].path}`);
+      }
     },
   },
 };

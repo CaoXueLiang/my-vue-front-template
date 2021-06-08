@@ -2,7 +2,12 @@ import router from "./router";
 import store from "./store";
 import { constRoutes, asyncRoutes } from "@/router";
 import _ from "lodash";
-import { IsHasToken, IsHasUserInfo, saveUserInfo } from "./utils/loginManage";
+import {
+  IsHasToken,
+  IsHasUserInfo,
+  saveUserInfo,
+  savePermissionMenus,
+} from "./utils/loginManage";
 
 const whiteList = ["/login"]; // no redirect whitelist
 
@@ -17,8 +22,9 @@ router.beforeEach(async (to, from, next) => {
       if (hasGetUserInfo) {
         next();
       } else {
-        saveUserInfo({ name: "小明", age: "18", height: "180cm" });
         let permissionArray = getPermissionMenus();
+        saveUserInfo({ name: "小明", age: "18", height: "180cm" });
+        savePermissionMenus(permissionArray);
         router.options.routes = [...constRoutes, ...permissionArray];
         router.addRoutes(permissionArray);
         next({ ...to, replace: true });
@@ -68,6 +74,6 @@ function getPermissionMenus() {
 }
 
 function filterByMenuId(menusArray) {
-  let menuIdArray = store.state.permisstionMenus;
+  let menuIdArray = store.state.permisstionMenuIds;
   return menusArray.filter((item) => menuIdArray.includes(item.meta.menuId));
 }

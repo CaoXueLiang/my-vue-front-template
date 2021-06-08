@@ -58,6 +58,7 @@ export const asyncRoutes = [
       title: "工作台",
       icon: "el-icon-s-help",
       menuId: 100,
+      code: "CONTROLBOARD",
     },
     children: [
       {

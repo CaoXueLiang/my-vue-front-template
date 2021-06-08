@@ -58,14 +58,9 @@ export default {
       if (res) {
         saveToken("my_vue_front_token");
         savePermission([
-          100, 101, 102, 103, 104, 105, 106, 107, 108, 200, 201, 202, 203, 300,
-          301, 302, 303, 400, 401, 402, 403,
+          100, 101, 102, 105, 106, 107, 108, 200, 201, 202, 203, 300, 301, 302,
+          303, 400, 401, 402, 403,
         ]);
-        console.log(
-          "----------保存的permisstion---------" +
-            JSON.stringify(this.$store.state.permisstionMenus)
-        );
-        console.log("-------asyncRoutes-------" + JSON.stringify(asyncRoutes));
         this.$router.push({ path: "/" });
       }
     },
