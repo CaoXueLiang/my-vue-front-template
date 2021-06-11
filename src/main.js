@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import "./styles/index.scss";
 import "@/assets/personLocationIcon/iconfont.css";
+import "@/assets/menuicons/iconfont.css";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import permisstion from "./permission";
