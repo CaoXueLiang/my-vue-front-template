@@ -1,4 +1,5 @@
 import store from "../store/index";
+import { resetRouter } from "../router/index";
 
 export function savePermission(menusIds) {
   store.commit("SET_PERMISSTIONMENUIDS", menusIds);
@@ -36,6 +37,7 @@ export function loginOut() {
   store.commit("SET_APPLICATIONMENUS", []);
   store.commit("SET_USERINFO", null);
   store.commit("SET_TOKEN", "");
+  resetRouter();
 }
 
 export function getPermisstionMenus() {

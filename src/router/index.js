@@ -242,4 +242,12 @@ const router = new VueRouter({
   routes: [...constRoutes],
 });
 
+export function resetRouter() {
+  const newRouter = new VueRouter({
+    mode: "history",
+    routes: [...constRoutes],
+  });
+  router.matcher = newRouter.matcher; // reset router
+}
+
 export default router;
