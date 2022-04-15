@@ -18,6 +18,7 @@ router.beforeEach(async (to, from, next) => {
       // if is logged in, redirect to the home page
       next({ path: "/" });
     } else {
+      debugger;
       const hasGetUserInfo = IsHasUserInfo();
       if (hasGetUserInfo) {
         next();
